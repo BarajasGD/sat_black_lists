@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-{% if resultado.encontrado %}danger{% else %}success{% endif %} text-white">
+                    <h3 class="mb-0">
+                        <i class="bi bi-{% if resultado.encontrado %}exclamation-triangle{% else %}check-circle{% endif %} me-2"></i>
+                        Resultado para RFC: {{ rfc }}
+                        <span class="float-end badge bg-light text-dark">
+                            {{ lista_consultada }}
+                        </span>
+                    </h3>
+                </div>
+                
+                <div class="card-body">
+                    {% if resultado.error %}
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-octagon me-2"></i>
+                        {{ resultado.error }}
+                    </div>
+                    {% endif %}
+                    
+                    {% if resultado.encontrado %}
+                    <div class="alert alert-danger">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Este RFC aparece en la lista {{ lista_consultada }}
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>RFC</th>
+                                    <th>Razón Social</th>
+                                    <th>Supuesto</th>
+                                    <th>Fecha Publicación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for registro in resultado.registros %}
+                                <tr>
+                                    <td>{{ registro.RFC }}</td>
+                                    <td>{{ registro.razon_social }}</td>
+                                    <td>{{ registro.supuesto }}</td>
+                                    <td>{{ registro.fecha_publicacion }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        El RFC no aparece en la lista {{ lista_consultada }}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a href="{% url 'verification' %}" class="btn btn-outline-primary">
+                            <i class="bi bi-arrow-left-circle me-2"></i>Nueva Consulta
+                        </a>
+                        
+                        {% if resultado.encontrado %}
+                        <a href="#" class="btn btn-danger">
+                            <i class="bi bi-download me-2"></i>Descargar Reporte
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

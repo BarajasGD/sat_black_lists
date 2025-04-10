@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="bi bi-search me-2"></i>Verificar RFC en Listas SAT
+                    </h3>
+                </div>
+                
+                <div class="card-body">
+                    {% if messages %}
+                    <div class="mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post" id="consultaForm">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="id_rfc" class="form-label fw-bold">RFC a consultar</label>
+                            {{ form.rfc }}
+                            <div class="form-text">Ingrese el RFC sin guiones o espacios</div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="id_lista" class="form-label fw-bold">Lista a verificar</label>
+                            {{ form.lista }}
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 py-3">
+                            <i class="bi bi-search me-2"></i>Verificar Ahora
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto mayúsculas y limitar longitud
+document.getElementById('id_rfc').addEventListener('input', function(e) {
+    this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (this.value.length > 13) {
+        this.value = this.value.slice(0, 13);
+    }
+});
+</script>
+{% endblock %}

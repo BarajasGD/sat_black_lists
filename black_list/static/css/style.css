@@ -1,0 +1,255 @@
+.topnav {
+    background-color: #2c3e50; /* Azul oscuro elegante */
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topnav a {
+    color: #ecf0f1;
+    text-align: center;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.topnav a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.topnav a.active {
+    background-color: #3498db; /* Azul brillante */
+    color: white;
+    font-weight: 600;
+}
+
+.topnav a.active:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #fff;
+}
+
+/* Íconos Bootstrap */
+.topnav a i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .topnav {
+        flex-direction: column;
+        padding: 0;
+    }
+    
+    .topnav a {
+        justify-content: center;
+        padding: 1rem;
+    }
+}
+
+
+/* 1. Variables y Estilos Base */
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --font-main: 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  /* 2. Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--primary) 0%, #1a2b3c 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: white;
+    transform: skewY(-2deg);
+    z-index: 1;
+  }
+  
+  .hero-section h1 {
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    font-weight: 800;
+  }
+  
+  .hero-section .btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .hero-section .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* 3. Cards de Tipos de Listas */
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+  }
+  
+  .card .bi {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .bi {
+    transform: scale(1.1);
+  }
+  
+  /* 4. Listas de Consecuencias */
+  .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    padding: 1.25rem 1.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: rgba(0,0,0,0.03);
+  }
+  
+  .list-group-item .bi {
+    min-width: 24px;
+  }
+  
+  /* 5. Acordeón FAQ */
+  .accordion-button {
+    font-weight: 600;
+    padding: 1.25rem 1.5rem;
+    background-color: white;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: rgba(var(--primary), 0.05);
+    color: var(--primary);
+  }
+  
+  .accordion-body {
+    padding: 1.5rem;
+  }
+  
+  /* 6. Efectos Generales */
+  h2, h3, h4 {
+    font-weight: 700;
+    color: var(--dark);
+  }
+  
+  a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn {
+    padding: 0.5rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+  /* 7. Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero-section {
+      text-align: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    
+    .hero-section img {
+      margin-top: 2rem;
+      max-height: 300px;
+    }
+    
+    .card {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  /* 8. Animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fadein {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  
+  /* 9. Efectos Especiales */
+  .shadow-soft {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 10. Personalización de Bootstrap */
+  .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary) !important;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+  }
+  
+  .btn-primary:hover, .btn-outline-primary:hover {
+    background-color: #1a2b3c;
+    border-color: #1a2b3c;
+  }
